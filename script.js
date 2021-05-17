@@ -1,4 +1,4 @@
-
+// mass - массив включающий приложение 1 методимческих указаний
 let mass = [
     [ 8000.00,    7493.50,    6987.00,    0.00,    0.0,  1,    1],
     [ 8000.06,    7493.56,    6987.06,    0.45,    1.0,  1,    2],
@@ -592,7 +592,7 @@ let mass = [
     
     ];
     
-    
+    // функция преобразующая столбцы двумерного массива в одномерные массивы 
     function ColumnToRow(arr, colu) {
         let newArr = '';
         for (let i = 0; i < arr.length; i++){
@@ -601,6 +601,7 @@ let mass = [
            return newArr.split(',');
     }
     
+    // идентификаторы обозначающие одномерные массивы, состоящие из столбцов двумерного массива mass
     let Sg;
     let Sc;
     let Sh;
@@ -608,21 +609,15 @@ let mass = [
     let t;
     let step;
     
+    /* формирование одномерных массивов отражающих столбцы (ордината головы поезда, ордината центра поезда, ордината хвоста поезда, скорость, время, номер шага) таблицы приложения 1 методических указаний */
     Sg = ColumnToRow(mass, 0);
-    //console.log(Sg);
     Sc = ColumnToRow(mass, 1);
-    //console.log(Sc);
     Sh = ColumnToRow(mass, 2);
-    //console.log(Sh);
     V = ColumnToRow(mass, 3);
-    //console.log(V);
     t = ColumnToRow(mass, 4);
-    //console.log(t);
     step = ColumnToRow(mass, 6);
-    //console.log(step);
-    
-    Ir = 237;
-    
+      
+    /* функция поиска элемента в массиве: в функцию передается массив и число которое требуется найти либо ближайшее округляя в большую сторону */
     let srchInArr = function searchInArray(array, n) {
         for (let i = 0; i < array.length; i++) {
             if(array[i] >= n) {
@@ -631,4 +626,52 @@ let mass = [
         }
     }
     
-    console.log(srchInArr(t, Ir));
+    // исходные данные
+    let lzu = 540;
+    let Iz = 5.5;
+    let Ir;
+    let Szu5;
+    let Szu4;
+    let S2 = 8000;
+    
+
+    Ir = Iz * 0.9 * 60;
+    console.log('lзу = ' + lzu + ', Iр = ' + Ir);
+    Tzu5 = srchInArr(t, Ir)[1];
+    console.log('Tхзу5 = ' + Tzu5);
+    Szu5 = Sh[srchInArr(t, Ir)[0]];
+    console.log('Sзу5 = ' + Szu5);
+    S5 = Szu5 - lzu;
+    console.log('S5 = ' + S5);
+
+    if(S5 - S2 < 3000) S4 = S5;
+    console.log('S5 - S2 = ' + (S5 - S2).toFixed(0) + ' < 3000 => S4 = ' + S4);
+    if(S4 !== 0) {
+        Tc2 = t[srchInArr(Sc, S2)[0]];
+        console.log('Тц2 = ' + Tc2);
+        Tc4 = t[srchInArr(Sc, S4)[0]];
+        console.log('Тц4 = ' + Tc4);
+        Tc24 = (Tc4-Tc2)/2;
+        console.log('Тц2-4/2 = ' + Tc24);
+        Tc3 = + Tc2 + Tc24;
+        console.log('Тц3 = ' + Tc3);
+        S3 = Sc[srchInArr(t, Tc3)[0]];
+        console.log('S3 = ' + S3);
+
+    }
+
+    // функция определения ординат светофоров одинаковой серии
+    function identicalSeries(Sg1){
+
+    }
+
+    // функция определения ординат светофоров разных серий (для 3х блок-участков)
+    function defferentSeries3(Sc1, Sc4){
+
+    }
+
+    // функция определения ординат светофоров разных серий (для 2х блок-участков)
+    function defferentSeries2(Sc1, Sc3){
+        
+    }
+  
