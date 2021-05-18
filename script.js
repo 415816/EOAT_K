@@ -1,5 +1,5 @@
-// mass - массив включающий приложение 1 методимческих указаний
-let mass = [
+    // mass - массив включающий приложение 1 методимческих указаний
+    let mass = [
     [ 8000.00,    7493.50,    6987.00,    0.00,    0.0,  1,    1],
     [ 8000.06,    7493.56,    6987.06,    0.45,    1.0,  1,    2],
     [ 8000.25,    7493.75,    6987.25,    0.89,    2.0,  1,    3],
@@ -590,7 +590,7 @@ let mass = [
     [18214.90,   17708.40,   17201.90,    0.00,  610.4,  4,  588],
     [18214.90,   17708.40,   17201.90,    0.00,  610.4,  7,  589],
     
-    ];
+        ];
     
     // функция преобразующая столбцы двумерного массива в одномерные массивы 
     function ColumnToRow(arr, colu) {
@@ -609,6 +609,9 @@ let mass = [
     let t;
     let step;
     
+    let calculat = document.querySelector('.startCalculation');
+    calculat.onclick = calcBU;
+
     /* формирование одномерных массивов отражающих столбцы (ордината головы поезда, ордината центра поезда, ордината хвоста поезда, скорость, время, номер шага) таблицы приложения 1 методических указаний */
     Sg = ColumnToRow(mass, 0);
     Sc = ColumnToRow(mass, 1);
@@ -630,48 +633,138 @@ let mass = [
     let lzu = 540;
     let Iz = 5.5;
     let Ir;
-    let Szu5;
-    let Szu4;
-    let S2 = 8000;
-    
-
+    let S2 = 8000, S3, S4, S5, S6, S7, S8, S9, S10;
+    let Szu2, Szu3, Szu4, Szu5, Szu6, Szu7, Szu8, Szu9, Szu10;
+    let Thzu2, Thzu3, Thzu4, Thzu5, Thzu6, Thzu7, Thzu8, Thzu9, Thzu10;
+    let Tg2, Tg3, Tg4, Tg5, Tg6, Tg7, Tg8, Tg9, Tg10;
     Ir = Iz * 0.9 * 60;
-    console.log('lзу = ' + lzu + ', Iр = ' + Ir);
-    Tzu5 = srchInArr(t, Ir)[1];
-    console.log('Tхзу5 = ' + Tzu5);
-    Szu5 = Sh[srchInArr(t, Ir)[0]];
-    console.log('Sзу5 = ' + Szu5);
-    S5 = Szu5 - lzu;
-    console.log('S5 = ' + S5);
 
-    if(S5 - S2 < 3000) S4 = S5;
-    console.log('S5 - S2 = ' + (S5 - S2).toFixed(0) + ' < 3000 => S4 = ' + S4);
-    if(S4 !== 0) {
-        Tc2 = t[srchInArr(Sc, S2)[0]];
-        console.log('Тц2 = ' + Tc2);
-        Tc4 = t[srchInArr(Sc, S4)[0]];
-        console.log('Тц4 = ' + Tc4);
-        Tc24 = (Tc4-Tc2)/2;
-        console.log('Тц2-4/2 = ' + Tc24);
-        Tc3 = + Tc2 + Tc24;
-        console.log('Тц3 = ' + Tc3);
-        S3 = Sc[srchInArr(t, Tc3)[0]];
-        console.log('S3 = ' + S3);
-
+    //identicalSeries(9000);
+    // функция определения ординаты светофоров одинаковой серии
+    function identicalSeries(Sg1, Iz){
+        let Tg1, Thzu4, Szu4, S4;
+        Tg1 = t[srchInArr(Sg, Sg1)[0]];
+        //console.log('Tг = ' + Tg1);
+        Thzu4 = + Tg1 + (Iz * 0.9 * 60);
+        //console.log('Txзу4 = ' + Thzu4);
+        Szu4 = Sh[srchInArr(t, Thzu4)[0]];
+        //console.log('Sзу4 = ' + Szu4);
+        S4 = Szu4 - lzu;
+        //console.log('S4 = ' + S4);
+        return [Tg1, Thzu4, Szu4, S4];
     }
-
-    // функция определения ординат светофоров одинаковой серии
-    function identicalSeries(Sg1){
-
-    }
-
+    //defferentSeries3(8000, 13319)
     // функция определения ординат светофоров разных серий (для 3х блок-участков)
     function defferentSeries3(Sc1, Sc4){
-
+        let Tc1, Tc2, Tc3, Tc4, S2, S3; 
+        Tc1 = t[srchInArr(Sc, Sc1)[0]];
+        //console.log('Tц1 = ' + Tc1);
+        Tc4 = t[srchInArr(Sc, Sc4)[0]];
+        //console.log('Тц4 = ' + Tc4);
+        Tc2 = + Tc1 + (Tc4 - Tc1)/3;
+        //console.log('Тц2 = ' + Tc2);
+        Tc3 = + Tc4 - (Tc4 - Tc1)/3;
+        //console.log('Тц3 = ' + Tc3);
+        S2 = Sc[srchInArr(t, Tc2)[0]];
+        //console.log('S2 = ' + S2);
+        S3 = Sc[srchInArr(t, Tc3)[0]];
+        //console.log('S3 = ' + S3);
+        return [Tc1, Tc2, Tc3, Tc4, S2, S3];
     }
-
+    // defferentSeries2(8000, 10304)
     // функция определения ординат светофоров разных серий (для 2х блок-участков)
     function defferentSeries2(Sc1, Sc3){
-        
+        let Tc1, Tc2, Tc3, S2; 
+        Tc1 = t[srchInArr(Sc, Sc1)[0]];
+        //console.log('Tц1 = ' + Tc1);
+        Tc3 = t[srchInArr(Sc, Sc3)[0]];
+        //console.log('Тц3 = ' + Tc3);
+        Tc2 = + Tc1 + (Tc3-Tc1)/2;
+        //console.log('Тц2 = ' + Tc2);
+        S2 = Sc[srchInArr(t, Tc2)[0]];
+        //console.log('S2 = ' + S2);
+        return [Tc1, Tc3, Tc2, S2];
     }
-  
+    function calcBU() {
+        console.log(Iz);
+        Tg2 = identicalSeries(S2, Iz)[0];
+        Thzu5 = identicalSeries(S2, Iz)[1];
+        Szu5 = identicalSeries(S2, Iz)[2];
+        S5 = identicalSeries(S2, Iz)[3];
+        console.log('Тг2 = ' + Tg2);
+        console.log('Тхзу5 = ' + Thzu5);
+        console.log('Тхзу5 = ' + Szu5);
+        console.log('S5 = ' + S5);
+
+        if (S5 - S2 < 3000) {
+            S4 = S5;
+            Tc2 = defferentSeries2(S2, S4)[0];
+            Tc4 = defferentSeries2(S2, S4)[1];
+            Tc3 = defferentSeries2(S2, S4)[2];
+            S3 = defferentSeries2(S2, S4)[3];
+            console.log('Тц2 = ' + Tc2);
+            console.log('Тц4 = ' + Tc4);
+            console.log('Тц3 = ' + Tc3);
+            console.log('S3 = ' + S3);
+            if (S3 < 9000) {
+                console.log('Iз = ' + Iz);
+                Iz += 0.25;
+                console.log('Iз = ' + Iz);
+                calcBU();}
+        } else {Tc2 = defferentSeries3(S2, S5)[0];
+                Tc3 = defferentSeries3(S2, S5)[1];
+                Tc4 = defferentSeries3(S2, S5)[2];
+                Tc5 = defferentSeries3(S2, S5)[3];
+                S3 = defferentSeries3(S2, S5)[4];
+                S4 = defferentSeries3(S2, S5)[5];
+                console.log('Тц2 = ' + Tc2);
+                console.log('Тц3 = ' + Tc3);
+                console.log('Тц4 = ' + Tc4);
+                console.log('Тц5 = ' + Tc5);
+                console.log('S3 = ' + S3);
+                console.log('S4 = ' + S4);
+                if (S3 < 9000) {
+                    console.log('Iз = ' + Iz);
+                    Iz += 0.25;
+                    console.log('Iз = ' + Iz);
+                    calcBU();}
+            }
+            
+            Tg3 = identicalSeries(S3, Iz)[0];
+            Thzu6 = identicalSeries(S3, Iz)[1];
+            Szu6 = identicalSeries(S3, Iz)[2];
+            S6 = identicalSeries(S3, Iz)[3];
+            console.log('Тг3 = ' + Tg3);
+            console.log('Тхзу6 = ' + Thzu6);
+            console.log('Sзу6 = ' + Szu6);
+            console.log('S6 = ' + S6);
+
+            if(S4 == S5) {
+            Tc4 = defferentSeries2(S4, S6)[0];
+            Tc6 = defferentSeries2(S4, S6)[1];
+            Tc5 = defferentSeries2(S4, S6)[2];
+            S5 = defferentSeries2(S4, S6)[3];
+            console.log('Тц4 = ' + Tc4);
+            console.log('Тц6 = ' + Tc6);
+            console.log('Тц5 = ' + Tc5);
+            console.log('S5 = ' + S5);
+            }
+
+            Tg4 = identicalSeries(S4, Iz)[0];
+            Thzu7 = identicalSeries(S4, Iz)[1];
+            Szu7 = identicalSeries(S4, Iz)[2];
+            S7 = identicalSeries(S4, Iz)[3];
+            console.log('Тг4 = ' + Tg4);
+            console.log('Тхзу7 = ' + Thzu7);
+            console.log('Sзу7 = ' + Szu7);
+            console.log('S7 = ' + S7);
+            
+            Tg5 = identicalSeries(S5, Iz)[0];
+            Thzu8 = identicalSeries(S5, Iz)[1];
+            Szu8 = identicalSeries(S5, Iz)[2];
+            S8 = identicalSeries(S5, Iz)[3];
+            console.log('Тг5 = ' + Tg5);
+            console.log('Тхзу8 = ' + Thzu8);
+            console.log('Sзу8 = ' + Szu8);
+            console.log('S8 = ' + S8);
+}
