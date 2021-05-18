@@ -639,13 +639,14 @@
     let Tg2, Tg3, Tg4, Tg5, Tg6, Tg7, Tg8, Tg9, Tg10;
     Ir = Iz * 0.9 * 60;
 
-    //identicalSeries(9000);
+    // identicalSeries(9000);
     // функция определения ординаты светофоров одинаковой серии
     function identicalSeries(Sg1, Iz){
         let Tg1, Thzu4, Szu4, S4;
         Tg1 = t[srchInArr(Sg, Sg1)[0]];
         //console.log('Tг = ' + Tg1);
         Thzu4 = + Tg1 + (Iz * 0.9 * 60);
+        if(Thzu4 >= 591.2) {return [Tg1, Thzu4, 17125+lzu, 17125];}
         //console.log('Txзу4 = ' + Thzu4);
         Szu4 = Sh[srchInArr(t, Thzu4)[0]];
         //console.log('Sзу4 = ' + Szu4);
@@ -744,6 +745,7 @@
             Tc6 = defferentSeries2(S4, S6)[1];
             Tc5 = defferentSeries2(S4, S6)[2];
             S5 = defferentSeries2(S4, S6)[3];
+            S5 = +S5;
             console.log('Тц4 = ' + Tc4);
             console.log('Тц6 = ' + Tc6);
             console.log('Тц5 = ' + Tc5);
