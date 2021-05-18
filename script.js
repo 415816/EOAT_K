@@ -630,8 +630,8 @@
     }
     
     // исходные данные
-    let lzu = 540;
-    let Iz = 5.5;
+    let lzu = 890;
+    let Iz = 5.75;
     let Ir;
     let S2 = 8000, S3, S4, S5, S6, S7, S8, S9, S10;
     let Szu2, Szu3, Szu4, Szu5, Szu6, Szu7, Szu8, Szu9, Szu10;
@@ -699,6 +699,7 @@
 
         if (S5 - S2 < 3000) {
             S4 = S5;
+            console.log('S4 = ' + S4);
             Tc2 = defferentSeries2(S2, S4)[0];
             Tc4 = defferentSeries2(S2, S4)[1];
             Tc3 = defferentSeries2(S2, S4)[2];
@@ -769,4 +770,4 @@
             console.log('Тхзу8 = ' + Thzu8);
             console.log('Sзу8 = ' + Szu8);
             console.log('S8 = ' + S8);
-}
+    }
