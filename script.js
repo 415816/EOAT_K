@@ -610,7 +610,7 @@
     let step;
     
     let calculat = document.querySelector('.startCalculation');
-    calculat.onclick = calcBU;
+    
 
     /* формирование одномерных массивов отражающих столбцы (ордината головы поезда, ордината центра поезда, ордината хвоста поезда, скорость, время, номер шага) таблицы приложения 1 методических указаний */
     Sg = ColumnToRow(mass, 0);
@@ -629,23 +629,36 @@
         }
     }
     
+    let lzu, Iz;
     // исходные данные
-    let lzu = 690;
-    let Iz = 5.5;
+    let lzuv = document.querySelector('.lzu');
+    let Izv = document.querySelector('.Iz');
+
+    document.querySelector('.pullData').onclick = () => {
+    lzu = parseInt(lzuv.value);
+    Iz = parseFloat(Izv.value);
+    }
+    /* let lzu = 500;
+    let Iz = 5.5 */;
+
     let Ir;
     let S2 = 8000, S3, S4, S5, S6, S7, S8, S9, S10;
     let Szu2, Szu3, Szu4, Szu5, Szu6, Szu7, Szu8, Szu9, Szu10;
     let Thzu2, Thzu3, Thzu4, Thzu5, Thzu6, Thzu7, Thzu8, Thzu9, Thzu10;
     let Tg2, Tg3, Tg4, Tg5, Tg6, Tg7, Tg8, Tg9, Tg10;
-    Ir = Iz * 0.9 * 60;
+    
+    calculat.onclick = calcBU;
+    /* calculat.onclick = () => {
+        console.log(parseFloat(Iz.value));
+        calcBU(parseFloat(Iz.value, lzu.value));} */
 
     // функция определения ординаты светофоров одинаковой серии
     function identicalSeries(Sg1, Iz){
         let Tg1, Thzu4, Szu4, S4;
         Tg1 = t[srchInArr(Sg, Sg1)[0]];
-        Thzu4 = + Tg1 + (Iz * 0.9 * 60);
+        Thzu4 = +Tg1 + (Iz * 0.9 * 60);
         if(Thzu4 >= 591.2) {return [Tg1, Thzu4, 17125+lzu, 17125];}
-        Szu4 = Sh[srchInArr(t, Thzu4)[0]];
+        Szu4 = +Sh[srchInArr(t, Thzu4)[0]];
         S4 = Szu4 - lzu;
         return [Tg1, Thzu4, Szu4, S4];
     }
@@ -691,7 +704,9 @@
     }
 
     function calcBU() {
+        Ir = Iz * 0.9 * 60;
         console.log(Iz);
+        console.log(Ir);
         // определение ординаты светофора 5
         Tg2 = identicalSeries(S2, Iz)[0];
         Thzu5 = identicalSeries(S2, Iz)[1];
