@@ -688,6 +688,8 @@
     // функция проверки условий
     function check(S2, S1){
         if(S2 != 17125 && (S2 - S1 > 2200) && S5 != 0) {
+            console.log(`${S2} - ${S1} = ${(S2 - S1)} > 2200`);
+            console.log(S1 + 2200);
             S2 = S1 + 2200;
         }
         Vg1 = V[srchInArr(Sg, S1)[0]];
