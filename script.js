@@ -692,6 +692,7 @@
             console.log(S1 + 2200);
             S2 = S1 + 2200;
         }
+
         Vg1 = V[srchInArr(Sg, S1)[0]];
         if (Vg1 >= 80 && (S2 - S1 < 1469)) {S1 = S2 - 1469;} 
             else if (Vg1 >= 70 && (S2 - S1 < 1163)) {S1 = S2 - 1469;}
@@ -767,10 +768,33 @@
             /* if(S5 != 0)  */S6 = check(S6, S5)[0];
             if(S6 == 17125 && (S6 - S5 > 1500)) {
                 S7 = 17125;
+                console.log('S6 - S5 > 1500 => S7 = 171+25, S6 = 161+25');
                 S6 = 16125;
+                S6 = check(S7, S6)[1];
+                console.log('S6 = ' + S6);
+                if (S6 - S5 > 2200) {
+                    S8 = S7;
+                    S7 = S6;
+                    console.log('S6 - S5 > 2200 => S8 = ' + S8 + ' S7 = ' + S6);
+                    Tc5 = defferentSeries2(S5, S7)[0];
+                    Tc7 = defferentSeries2(S5, S7)[1];
+                    Tc6 = defferentSeries2(S5, S7)[2];
+                    S6 = + defferentSeries2(S5, S7)[3];
+                    console.log('Тц5 = ' + Tc5);
+                    console.log('Тц7 = ' + Tc7);
+                    console.log('Тц6 = ' + Tc6);
+                    console.log('S6 = ' + S6);
+                }
+
                 S6 = check(S7, S6)[1];
                 S5 = check(S6, S5)[1];
                 S4 = check(S5, S4)[1];
+                console.log('S6 = ' + S6);
+                console.log('S5 = ' + S5);
+                console.log('S4 = ' + S4);
+                console.log('S3 = ' + S3);
+                console.log('S2 = ' + S2);
+
             }
 
             // определение ординаты светофора 5 (для случая, когда расстояние между 2 и 5 было меньше 3000м)
@@ -788,7 +812,7 @@
             }
 
             // определение ординаты светофора 7
-            if(S6 != 17125 && S7 != 17125){
+            if(S6 != 17125 && S7 != 17125 && S8 != 17125){
             Tg4 = identicalSeries(S4, Iz)[0];
             Thzu7 = identicalSeries(S4, Iz)[1];
             Szu7 = identicalSeries(S4, Iz)[2];
@@ -860,7 +884,7 @@
             }
             
             // определение ординаты светофора 9
-            if(S8 != 17125 && S9 != 17125){
+            if(S7 != 17125 && S8 != 17125 && S9 != 17125){
             Tg6 = identicalSeries(S6, Iz)[0];
             Thzu9 = identicalSeries(S6, Iz)[1];
             Szu9 = identicalSeries(S6, Iz)[2];
