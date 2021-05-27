@@ -602,12 +602,12 @@
     }
     
     // идентификаторы обозначающие одномерные массивы, состоящие из столбцов двумерного массива mass
-    const Sg;
-    const Sc;
-    const Sh;
-    const V;
-    const t;
-    const step;
+    let Sg;
+    let Sc;
+    let Sh;
+    let V;
+    let t;
+    let step;
     
     const calculat = document.querySelector('.startCalculation');
     
