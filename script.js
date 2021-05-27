@@ -635,11 +635,9 @@
     let Izv = document.querySelector('.Iz');
 
     document.querySelector('.pullData').onclick = () => {
-    lzu = parseInt(lzuv.value);
-    Iz = parseFloat(Izv.value);
+    lzu = parseInt(lzuv.value.replace(',', '.'));
+    Iz = parseFloat(Izv.value.replace(',', '.'));
     }
-    /* let lzu = 500;
-    let Iz = 5.5 */;
 
     let Ir;
     let S2 = 8000, S3, S4, S5, S6, S7, S8, S9, S10;
