@@ -755,14 +755,15 @@
             }
             
             // определение ординаты светофора 6
-            Tg3 = identicalSeries(S3, Iz)[0];
-            Thzu6 = identicalSeries(S3, Iz)[1];
-            Szu6 = identicalSeries(S3, Iz)[2];
-            S6 = + identicalSeries(S3, Iz)[3];
-            console.log('Тг3 = ' + Tg3);
-            console.log('Тхзу6 = ' + Thzu6);
-            console.log('Sзу6 = ' + Szu6);
-            console.log('S6 = ' + S6);
+            if(S6 != 17125 && S7 != 17125 && S8 != 17125){
+                Tg3 = identicalSeries(S3, Iz)[0];
+                Thzu6 = identicalSeries(S3, Iz)[1];
+                Szu6 = identicalSeries(S3, Iz)[2];
+                S6 = + identicalSeries(S3, Iz)[3];
+                console.log('Тг3 = ' + Tg3);
+                console.log('Тхзу6 = ' + Thzu6);
+                console.log('Sзу6 = ' + Szu6);
+                console.log('S6 = ' + S6);
             /* if(S5 != 0)  */S6 = check(S6, S5)[0];
             if(S6 == 17125 && (S6 - S5 > 1500)) {
                 S7 = 17125;
@@ -794,6 +795,7 @@
                 console.log('S2 = ' + S2);
 
             }
+        }
 
             // определение ординаты светофора 5 (для случая, когда расстояние между 2 и 5 было меньше 3000м)
             if(S5 == 0) {
@@ -836,7 +838,7 @@
                 console.log('S4 = ' + S4);
                 console.log('S3 = ' + S3);
                 console.log('S2 = ' + S2);
-            }
+                }
             }
 
             // определение ординаты светофора 8
