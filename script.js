@@ -1,5 +1,5 @@
     // mass - массив включающий приложение 1 методимческих указаний
-    let mass = [
+    const mass = [
     [ 8000.00,    7493.50,    6987.00,    0.00,    0.0,  1,    1],
     [ 8000.06,    7493.56,    6987.06,    0.45,    1.0,  1,    2],
     [ 8000.25,    7493.75,    6987.25,    0.89,    2.0,  1,    3],
@@ -602,14 +602,14 @@
     }
     
     // идентификаторы обозначающие одномерные массивы, состоящие из столбцов двумерного массива mass
-    let Sg;
-    let Sc;
-    let Sh;
-    let V;
-    let t;
-    let step;
+    const Sg;
+    const Sc;
+    const Sh;
+    const V;
+    const t;
+    const step;
     
-    let calculat = document.querySelector('.startCalculation');
+    const calculat = document.querySelector('.startCalculation');
     
 
     /* формирование одномерных массивов отражающих столбцы (ордината головы поезда, ордината центра поезда, ордината хвоста поезда, скорость, время, номер шага) таблицы приложения 1 методических указаний */
@@ -621,7 +621,7 @@
     step = ColumnToRow(mass, 6);
       
     /* функция поиска элемента в массиве: в функцию передается массив и число которое требуется найти либо ближайшее округляя в большую сторону */
-    let srchInArr = function searchInArray(array, n) {
+    const srchInArr = function searchInArray(array, n) {
         for (let i = 0; i < array.length; i++) {
             if(array[i] >= n) {
                 return [i, array[i]];
