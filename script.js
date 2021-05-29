@@ -612,7 +612,7 @@
     const calculat = document.querySelector('.startCalculation');
     
     const Lzu = [890,   540,    640,    740,    790,    690,    590,    715,    840,    565];
-    const Iz = [5.50,   5.75,   6.25,   6.50,   6.75,   7.00,   7.25,   7.50,   7.75,   8.00];
+    const Izv = [5.50,   5.75,   6.25,   6.50,   6.75,   7.00,   7.25,   7.50,   7.75,   8.00];
 
     /* формирование одномерных массивов отражающих столбцы (ордината головы поезда, ордината центра поезда, ордината хвоста поезда, скорость, время, номер шага) таблицы приложения 1 методических указаний */
     Sg = ColumnToRow(mass, 0);
@@ -634,11 +634,11 @@
     let lzu, Iz;
     // исходные данные
     let lzuv = document.querySelector('.lzu');
-    let Izv = document.querySelector('.Iz');
+    //let Izv = document.querySelector('.Iz');
 
     document.querySelector('.pullData').onclick = () => {
-    lzu = parseInt(lzuv.value.replace(',', '.'));
-    Iz = parseFloat(Izv.value.replace(',', '.'));
+    lzu = Lzu[lzuv.value[0]];
+    Iz = Izv[lzuv.value[1]];
     }
 
     let Ir;
