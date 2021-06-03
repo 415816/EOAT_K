@@ -698,9 +698,7 @@
             else if (Vg1 >= 70 && (S2 - S1 < 1163)) {S1 = S2 - 1469;}
                 else if (Vg1 >= 60 && (S2 - S1 < 919)) {S1 = S2 - 1000;}
         if(S2 - S1 < 1000) {
-            Iz += 0.25;
-            console.log('Iз = ' + Iz);
-            calcBU();
+            S2 = S1 + 1000;
             return [S2, S1];
         }
     return [S2, S1];
