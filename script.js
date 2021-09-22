@@ -674,7 +674,7 @@
         S3 = Sc[srchInArr(t, Tc3)[0]];
         return [Tc1, Tc2, Tc3, Tc4, S2, S3];
     }
-    
+
     // функция определения ординат светофоров разных серий (для 2х блок-участков)
     function defferentSeries2(Sc1, Sc3){
         let Tc1, Tc2, Tc3, S2; 
@@ -708,9 +708,11 @@
 
     function calcBU() {
         Ir = Iz * 0.9 * 60;
-        console.log(Iz);
-        console.log(Ir);
+        console.log('Iз = ' + Iz);
+        console.log('Ip = ' + Ir);
+        console.log('lзу = ' + lzu);
         // определение ординаты светофора 5
+        console.log('ОПРЕДЕЛЕНИЕ ОРДИНАТЫ СВЕТОФОРА 5');
         Tg2 = identicalSeries(S2, Iz)[0];
         Thzu5 = identicalSeries(S2, Iz)[1];
         Szu5 = identicalSeries(S2, Iz)[2];
@@ -724,6 +726,7 @@
         if (S5 - S2 < 3000) {
             S4 = + S5;
             S5 = 0;
+            console.log('ОПРЕДЕЛЕНИЕ ОРДИНАТЫ СВЕТОФОРА 3');
             console.log('S4 = ' + S4);
             Tc2 = defferentSeries2(S2, S4)[0];
             Tc4 = defferentSeries2(S2, S4)[1];
@@ -745,6 +748,7 @@
             Tc5 = defferentSeries3(S2, S5)[3];
             S3 = + defferentSeries3(S2, S5)[4];
             S4 = + defferentSeries3(S2, S5)[5];
+            console.log('ОПРЕДЕЛЕНИЕ ОРДИНАТ СВЕТОФРОВ 3 И 4');
             console.log('Тц2 = ' + Tc2);
             console.log('Тц3 = ' + Tc3);
             console.log('Тц4 = ' + Tc4);
@@ -762,6 +766,7 @@
                 Thzu6 = identicalSeries(S3, Iz)[1];
                 Szu6 = identicalSeries(S3, Iz)[2];
                 S6 = + identicalSeries(S3, Iz)[3];
+                console.log('ОПРЕДЕЛЕНИЕ ОРДИНАТЫ СВЕТОФОРА 6');
                 console.log('Тг3 = ' + Tg3);
                 console.log('Тхзу6 = ' + Thzu6);
                 console.log('Sзу6 = ' + Szu6);
@@ -805,6 +810,7 @@
             Tc6 = defferentSeries2(S4, S6)[1];
             Tc5 = defferentSeries2(S4, S6)[2];
             S5 = + defferentSeries2(S4, S6)[3];
+            console.log('ОПРЕДЕЛЕНИЕ ОРДИНАТЫ СВЕТОФОРА 5');
             console.log('Тц4 = ' + Tc4);
             console.log('Тц6 = ' + Tc6);
             console.log('Тц5 = ' + Tc5);
@@ -819,6 +825,7 @@
             Thzu7 = identicalSeries(S4, Iz)[1];
             Szu7 = identicalSeries(S4, Iz)[2];
             S7 = + identicalSeries(S4, Iz)[3];
+            console.log('ОПРЕДЕЛЕНИЕ ОРДИНАТЫ СВЕТОФОРА 7');
             console.log('Тг4 = ' + Tg4);
             console.log('Тхзу7 = ' + Thzu7);
             console.log('Sзу7 = ' + Szu7);
@@ -849,6 +856,7 @@
             Thzu8 = identicalSeries(S5, Iz)[1];
             Szu8 = identicalSeries(S5, Iz)[2];
             S8 = + identicalSeries(S5, Iz)[3];
+            console.log('ОПРЕДЕЛЕНИЕ ОРДИНАТЫ СВЕТОФОРА 8');
             console.log('Тг5 = ' + Tg5);
             console.log('Тхзу8 = ' + Thzu8);
             console.log('Sзу8 = ' + Szu8);
@@ -891,6 +899,7 @@
             Thzu9 = identicalSeries(S6, Iz)[1];
             Szu9 = identicalSeries(S6, Iz)[2];
             S9 = + identicalSeries(S6, Iz)[3];
+            console.log('ОПРЕДЕЛЕНИЕ ОРДИНАТЫ СВЕТОФОРА 9');
             console.log('Тг6 = ' + Tg6);
             console.log('Тхзу9 = ' + Thzu9);
             console.log('Sзу9 = ' + Szu9);
