@@ -591,7 +591,7 @@ const mass = [
     [18214.90, 17708.40, 17201.90, 0.00, 610.4, 7, 589],
 ];
 
-// функция преобразующая столбцы двумерного массива в одномерные массивы
+// функция, преобразующая столбцы двумерного массива в одномерные массивы
 function ColumnToRow(arr, colu) {
     let newArr = '';
     for (let i = 0; i < arr.length; i++) {
@@ -600,7 +600,7 @@ function ColumnToRow(arr, colu) {
     return newArr.split(',');
 }
 
-// идентификаторы обозначающие одномерные массивы, состоящие из столбцов двумерного массива mass
+// идентификаторы, обозначающие одномерные массивы, состоящие из столбцов двумерного массива mass
 let Sg;
 let Sc;
 let Sh;
@@ -635,18 +635,25 @@ let lzu, Iz;
 // исходные данные
 let lzuv = document.querySelector('.lzu');
 
-document.querySelector('.pullData').onclick = () => {
-    lzu = Lzu[lzuv.value[0]];
-    Iz = Izv[lzuv.value[1]];
-}
-
 let Ir;
 let S2 = 8000, S3, S4, S5, S6, S7, S8, S9, S10;
 let Szu5, Szu6, Szu7, Szu8, Szu9;
 let Thzu5, Thzu6, Thzu7, Thzu8, Thzu9;
 let Tg2, Tg3, Tg4, Tg5, Tg6;
 
-calculat.onclick = calcBU;
+calculat.onclick = () => {
+    lzu = Lzu[lzuv.value[0]];
+    Iz = Izv[lzuv.value[1]];
+    calcBU();
+}
+
+lzuv.addEventListener('keydown', function(e) {
+    if (e.keyCode === 13) {
+        lzu = Lzu[lzuv.value[0]];
+        Iz = Izv[lzuv.value[1]];
+        calcBU();
+    }
+})
 
 // функция определения ординаты светофоров одинаковой серии
 function identicalSeries(Sg1, Iz) {
